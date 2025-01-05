@@ -10,7 +10,7 @@ const HomePage = () => {
     <div className="overlay">
       <h1 className="title">Welcome to <i>DH</i> Properties</h1>
       <p className="subtitle">
-        <b>Your ultimate destination to find your <i>Dream Home.</i></b>
+        <b>Your ultimate destination to find your <br></br><i>Dream Home.</i></b>
       </p>
       <Link to="/search" className="explore-button">Find Now</Link>
     </div>

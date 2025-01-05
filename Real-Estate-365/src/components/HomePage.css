@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background: #f5f5f5;
+  background: #ced0e4;
 }
 
 /* Home Page Styling */
@@ -23,7 +23,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(132, 132, 136, 0.6); 
+  background: rgba(136, 144, 163, 0.6); 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,11 +46,11 @@ body {
 }
 
 .subtitle i {
-  color: #f9e001;
+  color: #17176c;
 }
 
 .explore-button {
-  background: #4caf50;
+  background: #346adf;
   color: #fff;
   padding: 12px 20px;
   font-size: 1.2rem;
@@ -61,7 +61,7 @@ body {
 }
 
 .explore-button:hover {
-  background: #388e3c;
+  background: #053589;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
 }

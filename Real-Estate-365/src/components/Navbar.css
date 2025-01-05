@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: linear-gradient(90deg, #4caf50, #1e88e5);
+  background: linear-gradient(90deg, #ccdceb, #2f74ad);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   position: sticky;
@@ -14,7 +14,7 @@
 
 .navbar .logo a {
   font-size: 1.8rem;
-  color: #fff;
+  color: #194a71;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
@@ -23,7 +23,7 @@
 }
 
 .navbar .logo a:hover {
-  color: #ffd700;
+  color: #090e58;
 }
 
 .nav-links {
@@ -46,8 +46,8 @@
 }
 
 .nav-links li a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffd700;
+  background: rgba(153, 177, 225, 0.2);
+  color: #062486;
 }
 
 .nav-links li a::after {
@@ -55,7 +55,7 @@
   position: absolute;
   width: 0%;
   height: 2px;
-  background: #ffd700;
+  background: #1425a8;
   bottom: 0;
   left: 0;
   transition: width 0.3s ease-in-out;
