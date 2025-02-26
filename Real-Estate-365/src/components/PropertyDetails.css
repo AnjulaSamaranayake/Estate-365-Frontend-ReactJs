@@ -142,7 +142,7 @@ body {
   align-items: center;
   font-size: 1.2rem;
   padding: 10px 15px;
-  background: #c4d2ea;
+  background: #ccd8ed;
   border-radius: 20px;
   margin: 10px 0;
 }
@@ -154,7 +154,7 @@ body {
 
 .back-button {
   background-color: #aec5db;
-  border: 1px solid #03305c;
+  border: 1px solid #a9bcd0;
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;

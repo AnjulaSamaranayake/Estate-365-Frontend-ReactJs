@@ -58,8 +58,32 @@ const SearchPage = () => {
     }));
   };
 
+  const validateFilters = () => {
+    if (
+      filters.minPrice < 0 ||
+      filters.maxPrice < 0 ||
+      filters.minBedrooms < 0 ||
+      filters.maxBedrooms < 0 ||
+      filters.addedYear < 0
+    ) {
+      alert("Values cannot be negative.");
+      return false;
+    }
+    if (filters.minPrice > filters.maxPrice) {
+      alert("Min Price cannot be greater than Max Price.");
+      return false;
+    }
+    if (filters.minBedrooms > filters.maxBedrooms) {
+      alert("Min Bedrooms cannot be greater than Max Bedrooms.");
+      return false;
+    }
+    return true;
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
+
+    if (!validateFilters()) return;
 
     const filtered = properties.filter((property) => {
       const matchesType =
@@ -129,7 +153,7 @@ const SearchPage = () => {
       <Navbar favouritesCount={favourites.length} />
       <Box sx={{ padding: "20px" }}>
         <Typography variant="h4" align="center" gutterBottom>
-          Search Your <i>Dream Home</i>
+          <b>Search Your <i>Dream Home</i></b>
         </Typography>
         <Box
           component="form"
@@ -143,7 +167,6 @@ const SearchPage = () => {
           onSubmit={handleSearch}
         >
           <Grid container spacing={2}>
-            {/* Search Filters */}
             <Grid item xs={12} md={4}>
               <TextField
                 label="Property Type"
@@ -160,7 +183,7 @@ const SearchPage = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
-                label="Min Price (Rs)"
+                label="Min Price in Millions (Rs.)"
                 name="minPrice"
                 type="number"
                 value={filters.minPrice}
@@ -170,7 +193,7 @@ const SearchPage = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
-                label="Max Price (Rs)"
+                label="Max Price in Millions (Rs.)"
                 name="maxPrice"
                 type="number"
                 value={filters.maxPrice}
@@ -200,7 +223,7 @@ const SearchPage = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
-                label="Added Month"
+                label="Added Month (Ex: February)"
                 name="addedMonth"
                 value={filters.addedMonth}
                 onChange={handleInputChange}
@@ -209,7 +232,7 @@ const SearchPage = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
-                label="Added Year"
+                label="Added Year (Ex: 2020)"
                 name="addedYear"
                 type="number"
                 value={filters.addedYear}
@@ -242,7 +265,6 @@ const SearchPage = () => {
 
         <Divider sx={{ marginY: "20px" }} />
 
-        {/* Favourites Section */}
         <Box
           sx={{
             padding: "20px",
@@ -277,11 +299,9 @@ const SearchPage = () => {
                   />
                   <CardContent>
                     <Typography variant="h6">
-                      Rs. {property.price.toLocaleString()} M
+                      Rs. {property.price.toLocaleString()} millions
                     </Typography>
-                    <Typography>Bedrooms: {property.bedrooms}</Typography>
-                    <Typography>Bathrooms: {property.bathrooms}</Typography>
-                    <Typography>Location: {property.location}</Typography>
+                    <Typography>{property.short}</Typography>
                     <IconButton
                       onClick={() => removeFavourite(property.id)}
                       color="error"
@@ -297,7 +317,6 @@ const SearchPage = () => {
 
         <Divider sx={{ marginY: "20px" }} />
 
-        {/* Search Results Section */}
         <Typography variant="h5" gutterBottom>
           Search Results
         </Typography>
@@ -321,18 +340,16 @@ const SearchPage = () => {
                 />
                 <CardContent>
                   <Typography variant="h6">
-                    Rs. {property.price.toLocaleString()} M
+                    Rs. {property.price.toLocaleString()} millions
                   </Typography>
-                  <Typography>Bedrooms: {property.bedrooms}</Typography>
-                  <Typography>Bathrooms: {property.bathrooms}</Typography>
-                  <Typography>Location: {property.location}</Typography>
+                  <Typography>{property.short}</Typography>
                   <IconButton
                     onClick={() => addToFavourites(property)}
-                    color={
-                      favourites.some((fav) => fav.id === property.id)
-                        ? "error"
-                        : "default"
-                    }
+                    style={{
+                      color: favourites.some((fav) => fav.id === property.id)
+                        ? "red"
+                        : "gray",
+                    }}
                   >
                     <Heart />
                   </IconButton>
