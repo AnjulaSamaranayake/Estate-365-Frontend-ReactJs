@@ -29,6 +29,7 @@ const SearchPage = () => {
     postcode: "",
   });
 
+  const [showWarning, setShowWarning] = useState(true);
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [favourites, setFavourites] = useState(() => {
@@ -119,6 +120,21 @@ const SearchPage = () => {
 
     setFilteredProperties(filtered);
   };
+
+  {showWarning && (
+  <div className="demo-warning-modal">
+    <div className="warning-content">
+      <h3>Demo Notice</h3>
+      <p>This is a demonstration website only. All properties shown are not for actual sale.</p>
+      <button 
+        className="warning-confirm-btn"
+        onClick={() => setShowWarning(false)}
+      >
+        I Understand
+      </button>
+    </div>
+  </div>
+)}
 
   const addToFavourites = (property) => {
     if (!favourites.some((fav) => fav.id === property.id)) {

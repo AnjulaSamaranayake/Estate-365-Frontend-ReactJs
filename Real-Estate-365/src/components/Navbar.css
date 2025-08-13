@@ -4,9 +4,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: linear-gradient(90deg, #ccdceb, #2f74ad);
+  background: linear-gradient(90deg, #66bb6a, #2e7d32);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -14,21 +14,20 @@
 
 .navbar .logo a {
   font-size: 1.8rem;
-  color: #194a71;
+  color: #e8f5e9;
   text-decoration: none;
   font-weight: bold;
-  text-transform: uppercase;
   letter-spacing: 1.5px;
   transition: color 0.3s ease-in-out;
 }
 
 .navbar .logo a:hover {
-  color: #090e58;
+  color: #ffffff;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   list-style: none;
 }
 
@@ -37,17 +36,18 @@
 }
 
 .nav-links li a {
-  color: #fff;
+  color: #e8f5e9;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 8px 12px;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
+  font-weight: 500;
 }
 
 .nav-links li a:hover {
-  background: rgba(153, 177, 225, 0.2);
-  color: #062486;
+  background: rgba(232, 245, 233, 0.2);
+  color: #ffffff;
 }
 
 .nav-links li a::after {
@@ -55,7 +55,7 @@
   position: absolute;
   width: 0%;
   height: 2px;
-  background: #1425a8;
+  background: #e8f5e9;
   bottom: 0;
   left: 0;
   transition: width 0.3s ease-in-out;
@@ -67,13 +67,14 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .nav-links {
+  .navbar {
     flex-direction: column;
-    gap: 10px;
+    padding: 15px;
   }
 
-  .navbar {
-    flex-wrap: wrap;
+  .nav-links {
+    margin-top: 15px;
+    gap: 15px;
   }
 
   .logo {
