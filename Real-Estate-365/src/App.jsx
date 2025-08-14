@@ -1,9 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage.jsx';
-import PropertyDetails from "./components/DemoWarning.jsx";
+import DemoWarning from "./components/DemoWarning.jsx";
 import SearchPage from './components/SearchPage.jsx';
-import PropertyDetails from "./components/PropertyDetails";
+import PropertyDetails from "./components/PropertyDetails.jsx";
+
 function App() {
   return (
         <Routes>
