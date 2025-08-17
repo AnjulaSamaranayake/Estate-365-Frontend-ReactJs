@@ -26,10 +26,6 @@ const Navbar = ({ favouritesCount = 0 }) => {
             <Search size={18} />
             <span>Browse</span>
           </Link>
-          <Link to="/favorites" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
-            <Heart size={18} />
-            <span>Favorites {favouritesCount > 0 && `(${favouritesCount})`}</span>
-          </Link>
         </div>
         
         <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle menu">

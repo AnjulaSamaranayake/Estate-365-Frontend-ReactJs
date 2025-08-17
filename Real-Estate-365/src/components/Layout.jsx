@@ -16,7 +16,7 @@ const Layout = () => {
       </main>
       <footer className="app-footer">
         <p>© {new Date().getFullYear()} HomeHarbor. All rights reserved.</p>
-        <p>Developed by ANJU.</p>
+        <p>Created by ANJU.</p>
       </footer>
     </div>
   );
