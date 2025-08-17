@@ -1,31 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-import Navbar from './Navbar';
 
 const HomePage = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showWarning, setShowWarning] = useState(true);
-
   return (
     <div className="home-container">
-      <Navbar />
-      
-      {showWarning && (
-        <div className="demo-warning-modal">
-          <div className="warning-content">
-            <h3>Demo Notice</h3>
-            <p>This is a demonstration website only. All properties shown are not for actual sale.</p>
-            <button 
-              className="warning-confirm-btn"
-              onClick={() => setShowWarning(false)}
-            >
-              I Understand
-            </button>
-          </div>
-        </div>
-      )}
-      
       <section className="hero-section">
         <div className="hero-content">
           <h1>Discover Your <span>Perfect Home</span></h1>
@@ -36,13 +15,28 @@ const HomePage = () => {
           </div>
         </div>
         <div className="hero-image">
-          <img src=".\public\prop10pic102.jpg" alt="Modern Home" />
-        
+          <img src="/prop10pic102.jpg" alt="Modern Home" />
         </div>
       </section>
       
       <section className="features-section">
-        {/* Add feature cards here */}
+        <div className="features-container">
+          <div className="feature-card">
+            <div className="feature-icon">🏡</div>
+            <h3>Wide Selection</h3>
+            <p>Choose from hundreds of properties across the country.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">💰</div>
+            <h3>Best Prices</h3>
+            <p>We negotiate the best deals for our clients.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">👨‍💼</div>
+            <h3>Expert Agents</h3>
+            <p>Our team has over 20 years of combined experience.</p>
+          </div>
+        </div>
       </section>
     </div>
   );

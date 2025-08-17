@@ -1,44 +1,20 @@
-/* SearchPage.css */
 .property-card {
   transition: all 0.3s ease;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .property-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
-}
-
-.MuiButton-containedPrimary {
-  background-color: #2e7d32 !important;
-}
-
-.MuiButton-containedPrimary:hover {
-  background-color: #1b5e20 !important;
-}
-
-.MuiButton-containedSecondary {
-  background-color: #d32f2f !important;
-}
-
-.MuiButton-containedSecondary:hover {
-  background-color: #b71c1c !important;
-}
-
-.MuiDivider-root {
-  margin: 30px 0 !important;
-}
-
-.MuiTypography-h4, .MuiTypography-h5 {
-  color: #2e7d32 !important;
+  box-shadow: 0 8px 20px rgba(106, 76, 147, 0.2);
 }
 
 .MuiCardContent-root {
-  padding: 16px !important;
-}
-
-.MuiTextField-root {
-  margin-bottom: 8px !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }

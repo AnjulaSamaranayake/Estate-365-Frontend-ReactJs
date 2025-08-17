@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./PropertyDetails.css";
-import Navbar from "./Navbar";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -22,12 +21,11 @@ const PropertyDetails = () => {
   }, [id]);
 
   if (!property) {
-    return <p>Loading property details...</p>;
+    return <div className="loading">Loading property details...</div>;
   }
 
   return (
-    <>
-      <Navbar />
+    <div className="property-details-container">
       <div className="property-details">
         <button className="back-button" onClick={() => navigate("/search")}>
           &larr; Back to Search
@@ -45,21 +43,23 @@ const PropertyDetails = () => {
           <img src={property.img7} alt="Gallery 7" />
         </div>
 
-        <p>
-          Price: <span>Rs. {property.price.toLocaleString()} million</span>
-        </p>
-        <p>
-          Bedrooms: <span>{property.bedrooms}</span>
-        </p>
-        <p>
-          Bathrooms: <span>{property.bathrooms}</span>
-        </p>
-        <p>
-          Area: <span>{property.area} perches</span>
-        </p>
-        <p>
-          Location: <span>{property.location}</span>
-        </p>
+        <div className="property-info">
+          <p>
+            Price: <span>Rs. {property.price.toLocaleString()} million</span>
+          </p>
+          <p>
+            Bedrooms: <span>{property.bedrooms}</span>
+          </p>
+          <p>
+            Bathrooms: <span>{property.bathrooms}</span>
+          </p>
+          <p>
+            Area: <span>{property.area} perches</span>
+          </p>
+          <p>
+            Location: <span>{property.location}</span>
+          </p>
+        </div>
 
         <div className="tabs">
           <button
@@ -107,7 +107,7 @@ const PropertyDetails = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

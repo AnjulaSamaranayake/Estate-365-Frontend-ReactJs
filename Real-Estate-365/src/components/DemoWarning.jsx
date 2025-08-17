@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { X } from 'lucide-react';
 import './DemoWarning.css';
 
-const DemoWarning = () => {
-  const [visible, setVisible] = useState(true);
-
-  if (!visible) return null;
-
+const DemoWarning = ({ onClose }) => {
   return (
-    <div className="demo-warning">
+    <div className="demo-warning-modal">
       <div className="warning-content">
-        <p>⚠️ This is a demo website. All properties are fictional.</p>
+        <h3>Demo Notice</h3>
+        <p>This is a demonstration website. All properties are fictional.</p>
         <button 
-          className="close-warning"
-          onClick={() => setVisible(false)}
+          className="warning-confirm-btn"
+          onClick={onClose}
           aria-label="Close warning"
         >
-          <X size={18} />
+          I Understand
         </button>
       </div>
     </div>

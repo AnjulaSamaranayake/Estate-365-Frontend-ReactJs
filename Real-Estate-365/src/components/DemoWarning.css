@@ -17,14 +17,25 @@
   border-radius: 8px;
   max-width: 500px;
   text-align: center;
+  position: relative;
+}
+
+.warning-content h3 {
+  color: #6a4c93;
+  margin-bottom: 1rem;
 }
 
 .warning-confirm-btn {
-  background: #2e7d32;
+  background: #6a4c93;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   margin-top: 1rem;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.warning-confirm-btn:hover {
+  background: #5a3d80;
 }

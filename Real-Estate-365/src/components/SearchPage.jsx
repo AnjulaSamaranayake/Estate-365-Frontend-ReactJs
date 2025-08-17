@@ -15,7 +15,6 @@ import {
   Divider,
 } from "@mui/material";
 import './SearchPage.css';
-import Navbar from "./Navbar";
 
 const SearchPage = () => {
   const [filters, setFilters] = useState({
@@ -29,7 +28,6 @@ const SearchPage = () => {
     postcode: "",
   });
 
-  const [showWarning, setShowWarning] = useState(true);
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [favourites, setFavourites] = useState(() => {
@@ -121,21 +119,6 @@ const SearchPage = () => {
     setFilteredProperties(filtered);
   };
 
-  {showWarning && (
-  <div className="demo-warning-modal">
-    <div className="warning-content">
-      <h3>Demo Notice</h3>
-      <p>This is a demonstration website only. All properties shown are not for actual sale.</p>
-      <button 
-        className="warning-confirm-btn"
-        onClick={() => setShowWarning(false)}
-      >
-        I Understand
-      </button>
-    </div>
-  </div>
-)}
-
   const addToFavourites = (property) => {
     if (!favourites.some((fav) => fav.id === property.id)) {
       setFavourites([...favourites, property]);
@@ -165,188 +148,159 @@ const SearchPage = () => {
   };
 
   return (
-    <>
-      <Navbar favouritesCount={favourites.length} />
-      <Box sx={{ padding: "20px" }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          <b>Search Your <i>Dream Home</i></b>
-        </Typography>
-        <Box
-          component="form"
-          sx={{
-            backgroundColor: "#fff",
-            padding: "20px",
-            borderRadius: "10px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            marginBottom: "30px",
-          }}
-          onSubmit={handleSearch}
-        >
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Property Type"
-                name="propertyType"
-                value={filters.propertyType}
-                onChange={handleInputChange}
-                select
-                fullWidth
-              >
-                <MenuItem value="Any">Any</MenuItem>
-                <MenuItem value="House">House</MenuItem>
-                <MenuItem value="Flat">Flat</MenuItem>
-              </TextField>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Min Price in Millions (Rs.)"
-                name="minPrice"
-                type="number"
-                value={filters.minPrice}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Max Price in Millions (Rs.)"
-                name="maxPrice"
-                type="number"
-                value={filters.maxPrice}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Min Bedrooms"
-                name="minBedrooms"
-                type="number"
-                value={filters.minBedrooms}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Max Bedrooms"
-                name="maxBedrooms"
-                type="number"
-                value={filters.maxBedrooms}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Added Month (Ex: February)"
-                name="addedMonth"
-                value={filters.addedMonth}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Added Year (Ex: 2020)"
-                name="addedYear"
-                type="number"
-                value={filters.addedYear}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Location"
-                name="postcode"
-                value={filters.postcode}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-                sx={{ height: "56px" }}
-              >
-                Search
-              </Button>
-            </Grid>
-          </Grid>
-        </Box>
-
-        <Divider sx={{ marginY: "20px" }} />
-
-        <Box
-          sx={{
-            padding: "20px",
-            backgroundColor: "#f9f9f9",
-            borderRadius: "10px",
-            marginBottom: "30px",
-          }}
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-        >
-          <Typography variant="h5" gutterBottom>
-            Favourites
-          </Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={clearFavourites}
-            disabled={favourites.length === 0}
-            sx={{ marginBottom: "10px" }}
-          >
-            Clear Favourites
-          </Button>
-          <Grid container spacing={2}>
-            {favourites.map((property) => (
-              <Grid item xs={12} sm={6} md={4} key={property.id}>
-                <Card className="property-card">
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={property.picture}
-                    alt="Property"
-                  />
-                  <CardContent>
-                    <Typography variant="h6">
-                      Rs. {property.price.toLocaleString()} millions
-                    </Typography>
-                    <Typography>{property.short}</Typography>
-                    <IconButton
-                      onClick={() => removeFavourite(property.id)}
-                      color="error"
-                    >
-                      <Trash />
-                    </IconButton>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-
-        <Divider sx={{ marginY: "20px" }} />
-
-        <Typography variant="h5" gutterBottom>
-          Search Results
-        </Typography>
+    <Box sx={{ padding: "20px", maxWidth: "1400px", margin: "0 auto" }}>
+      <Typography variant="h4" align="center" gutterBottom sx={{ color: "#6a4c93", fontWeight: "bold", marginBottom: "2rem" }}>
+        Search Your Dream Home
+      </Typography>
+      
+      <Box
+        component="form"
+        sx={{
+          backgroundColor: "#fff",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          marginBottom: "30px",
+        }}
+        onSubmit={handleSearch}
+      >
         <Grid container spacing={2}>
-          {filteredProperties.map((property) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              key={property.id}
-              draggable
-              onDragStart={(e) => handleDragStart(e, property)}
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Property Type"
+              name="propertyType"
+              value={filters.propertyType}
+              onChange={handleInputChange}
+              select
+              fullWidth
             >
+              <MenuItem value="Any">Any</MenuItem>
+              <MenuItem value="House">House</MenuItem>
+              <MenuItem value="Flat">Flat</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Min Price in Millions (Rs.)"
+              name="minPrice"
+              type="number"
+              value={filters.minPrice}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Max Price in Millions (Rs.)"
+              name="maxPrice"
+              type="number"
+              value={filters.maxPrice}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Min Bedrooms"
+              name="minBedrooms"
+              type="number"
+              value={filters.minBedrooms}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Max Bedrooms"
+              name="maxBedrooms"
+              type="number"
+              value={filters.maxBedrooms}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Added Month (Ex: February)"
+              name="addedMonth"
+              value={filters.addedMonth}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Added Year (Ex: 2020)"
+              name="addedYear"
+              type="number"
+              value={filters.addedYear}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              label="Location"
+              name="postcode"
+              value={filters.postcode}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              sx={{ 
+                height: "56px",
+                backgroundColor: "#6a4c93",
+                '&:hover': {
+                  backgroundColor: "#5a3d80",
+                }
+              }}
+            >
+              Search
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Divider sx={{ marginY: "20px", borderColor: "#ddd" }} />
+
+      <Box
+        sx={{
+          padding: "20px",
+          backgroundColor: "#f9f6ff",
+          borderRadius: "10px",
+          marginBottom: "30px",
+        }}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+      >
+        <Typography variant="h5" gutterBottom sx={{ color: "#6a4c93", fontWeight: "bold" }}>
+          Favourites
+        </Typography>
+        <Button
+          variant="contained"
+          onClick={clearFavourites}
+          disabled={favourites.length === 0}
+          sx={{ 
+            marginBottom: "10px",
+            backgroundColor: "#d32f2f",
+            '&:hover': {
+              backgroundColor: "#b71c1c",
+            },
+            '&:disabled': {
+              backgroundColor: "#f5f5f5",
+            }
+          }}
+        >
+          Clear Favourites
+        </Button>
+        <Grid container spacing={2}>
+          {favourites.map((property) => (
+            <Grid item xs={12} sm={6} md={4} key={property.id}>
               <Card className="property-card">
                 <CardMedia
                   component="img"
@@ -355,16 +309,58 @@ const SearchPage = () => {
                   alt="Property"
                 />
                 <CardContent>
-                  <Typography variant="h6">
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     Rs. {property.price.toLocaleString()} millions
                   </Typography>
                   <Typography>{property.short}</Typography>
                   <IconButton
+                    onClick={() => removeFavourite(property.id)}
+                    color="error"
+                  >
+                    <Trash />
+                  </IconButton>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
+      <Divider sx={{ marginY: "20px", borderColor: "#ddd" }} />
+
+      <Typography variant="h5" gutterBottom sx={{ color: "#6a4c93", fontWeight: "bold" }}>
+        Search Results
+      </Typography>
+      <Grid container spacing={2}>
+        {filteredProperties.map((property) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            key={property.id}
+            draggable
+            onDragStart={(e) => handleDragStart(e, property)}
+          >
+            <Card className="property-card">
+              <CardMedia
+                component="img"
+                height="140"
+                image={property.picture}
+                alt="Property"
+              />
+              <CardContent>
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  Rs. {property.price.toLocaleString()} millions
+                </Typography>
+                <Typography>{property.short}</Typography>
+                <Box sx={{ display: "flex", alignItems: "center", marginTop: "1rem" }}>
+                  <IconButton
                     onClick={() => addToFavourites(property)}
-                    style={{
+                    sx={{
                       color: favourites.some((fav) => fav.id === property.id)
-                        ? "red"
-                        : "gray",
+                        ? "#d32f2f"
+                        : "#aaa",
                     }}
                   >
                     <Heart />
@@ -373,17 +369,25 @@ const SearchPage = () => {
                     component={Link}
                     to={`/property/${property.id}`}
                     variant="outlined"
-                    sx={{ marginLeft: 1 }}
+                    sx={{ 
+                      marginLeft: 1,
+                      color: "#6a4c93",
+                      borderColor: "#6a4c93",
+                      '&:hover': {
+                        borderColor: "#5a3d80",
+                        backgroundColor: "rgba(106, 76, 147, 0.1)"
+                      }
+                    }}
                   >
                     View Details
                   </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 
